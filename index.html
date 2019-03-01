@@ -9,14 +9,14 @@
   <body>
     <h1>Students 1991</h1>
     <div class="categories">
-      <button class="btnall">Show all houses</button>
-      <button class="btngryf">Gryffindor</button>
-      <button class="btnhuff">Hufflepuff</button>
-      <button class="btnrav">Ravenclaw</button>
-      <button class="btnslyth">Slytherin</button>
-      <button class="btnfirst">Sort by firstname a-z</button>
-      <button class="btnlast">Sort by lastname a-z</button>
-      <button class="btnhouse">Sort by house a-z</button>
+      <button id="btnall">Show all houses</button>
+      <button id="Gryffindor">Gryffindor</button>
+      <button id="Hufflepuff">Hufflepuff</button>
+      <button id="Ravenclaw">Ravenclaw</button>
+      <button id="Slytherin">Slytherin</button>
+      <button id="btnfirst">Sort by firstname a-z</button>
+      <button id="btnlast">Sort by lastname a-z</button>
+      <button id="btnhouse">Sort by house a-z</button>
     </div>
     <ul id="list"></ul>
 
@@ -25,10 +25,17 @@
         <p class="first"><span></span></p>
         <p class="last"><span></span></p>
         <p class="house"><span></span></p>
-        <button id="studentButton">Show more</button>
+        <button id="btnstudent">Show more</button>
       </li>
     </template>
-
+    <div id="#" class="modal hide">
+      <div class="modal-content">
+        <img class="studentImg" src="" alt="portrait" />
+        <h1 class="name">Name: <span></span></h1>
+        <h2 class="house">Student house: <span></span></h2>
+        <img class="crestImg" src="" alt="housecrest" />
+      </div>
+    </div>
     <script src="studentlist.js"></script>
   </body>
 </html>
