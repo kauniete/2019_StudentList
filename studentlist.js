@@ -123,16 +123,14 @@ function displayList(arrayOfStudents) {
   });
 }
 
-const imgbase = "images/";
 function showDetails(student) {
   //console.log(student);
   const modal = document.querySelector(".modal");
+  const imgbase = "images/";
   modal.querySelector(".modal-content").id = student.name;
-  modal.querySelector(".studentImg").src = student.image;
   modal.querySelector(".name span").textContent =
     student.firstname + " " + student.lastname;
   modal.querySelector(".house span").textContent = student.house;
-  modal.querySelector(".crestImg").src = student.crestimage;
   if (student.house == "Gryffindor") {
     modal.querySelector(".crestImg").src = imgbase + "gryffindor.png";
   }
@@ -145,6 +143,13 @@ function showDetails(student) {
   if (student.house == "Hufflepuff") {
     modal.querySelector(".crestImg").src = imgbase + "hufflepuff.png";
   }
+
+  modal.querySelector(".studentImg").src =
+    imgbase +
+    student.lastname.toLowerCase() +
+    "_" +
+    student.firstname[0].toLowerCase() +
+    ".png";
 
   modal.classList.remove("hide");
   modal.addEventListener("click", () => modal.classList.add("hide"));
