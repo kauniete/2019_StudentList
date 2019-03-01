@@ -133,29 +133,19 @@ function showDetails(student) {
     student.firstname + " " + student.lastname;
   modal.querySelector(".house span").textContent = student.house;
   modal.querySelector(".crestImg").src = student.crestimage;
-  /*if (student.house == "Gryffindor") {
-    modal.querySelector(".modal-content").classList.add("gryffindor");
-  } else {
-    modal.querySelector(".modal-content").classList.remove("gryffindor");
+  if (student.house == "Gryffindor") {
+    modal.querySelector(".crestImg").src = imgbase + "gryffindor.png";
   }
-
-  if (student.house == "Hufflepuff") {
-    modal.querySelector(".modal-content").classList.add("hufflepuf");
-  } else {
-    modal.querySelector(".modal-content").classList.remove("hufflepuf");
-  }
-
-  if (student.house == "Ravenclaw") {
-    modal.querySelector(".modal-content").classList.add("ravenclaw");
-  } else {
-    modal.querySelector(".modal-content").classList.remove("ravenclaw");
-  }
-
   if (student.house == "Slytherin") {
-    modal.querySelector(".modal-content").classList.add("slytherin");
-  } else {
-    modal.querySelector(".modal-content").classList.remove("slytherin");
-  }*/
+    modal.querySelector(".crestImg").src = imgbase + "slytherin.png";
+  }
+  if (student.house == "Ravenclaw") {
+    modal.querySelector(".crestImg").src = imgbase + "ravenclaw.png";
+  }
+  if (student.house == "Hufflepuff") {
+    modal.querySelector(".crestImg").src = imgbase + "hufflepuff.png";
+  }
+
   modal.classList.remove("hide");
   modal.addEventListener("click", () => modal.classList.add("hide"));
 }
