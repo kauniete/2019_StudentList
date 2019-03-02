@@ -1,5 +1,6 @@
 "use strict";
 const baseLink = "https://petlatkea.dk/2019/hogwarts/students.json";
+const familyLink = "http://petlatkea.dk/2019/hogwarts/families.json";
 const studentObject = {
   firstname: "-student first name-",
   lastname: "-student last name-",
@@ -10,6 +11,7 @@ let filteredList = [];
 let currentFilter;
 let filter;
 let currentSort;
+
 window.addEventListener("DOMContentLoaded", init);
 
 function init() {
@@ -37,7 +39,7 @@ function getJSON() {
 
 function createObject(data) {
   data.forEach(element => {
-    const astudent = Object.create(studentObject);
+    let astudent = Object.create(studentObject);
     //console.log(astudent);
     let name = element.fullname;
     astudent.firstname = name.substring(0, name.indexOf(" "));
@@ -46,13 +48,22 @@ function createObject(data) {
     arrayOfStudents.push(astudent);
     filteredList = arrayOfStudents;
   });
+  addNewStudent(arrayOfStudents);
   arrayOfStudents.forEach(student => {
-    //onsole.log(student);
+    //console.log(student);
     const uniqueID = uuidv4();
     student.id = uniqueID;
   });
   console.log(arrayOfStudents);
   displayList(arrayOfStudents);
+}
+function addNewStudent(arrayOfStudents) {
+  let newStudent = {
+    firstname: "Indre",
+    lastname: "Karalkeviciute",
+    house: "Gryffindor"
+  };
+  arrayOfStudents.push(newStudent);
 }
 
 function filterList() {
@@ -129,6 +140,7 @@ function displayList(arrayOfStudents) {
     clone.querySelector("li").id = student.firstname;
     document.querySelector("#list").appendChild(clone);
   });
+
   countStudents(arrayOfStudents);
 }
 
@@ -226,11 +238,11 @@ function countStudents(arrayOfStudents) {
       counts.Hufflepuff +
       counts.Ravenclaw;*/
     document.querySelector(".numberofexpelled span").innerHTML =
-      34 - arrayOfStudents.length;
+      35 - arrayOfStudents.length;
     /*(counts.Gryffindor +
         counts.Slytherin +
         counts.Hufflepuff +
         counts.Ravenclaw);*/
   });
-  return countStudents();
+  //return countStudents();
 }
