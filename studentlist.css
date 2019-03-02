@@ -27,10 +27,11 @@ li {
   justify-content: space-around;
 }
 #list {
-  height: 75vh;
+  height: 50vh;
   width: 70vw;
   overflow: scroll;
 }
+
 .hide {
   display: none;
 }
@@ -47,4 +48,7 @@ li {
   background-color: beige;
   margin: 2em;
   padding: 2em;
+}
+.counter {
+  float: right;
 }

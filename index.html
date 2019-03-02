@@ -18,16 +18,38 @@
       <button id="btnlast">Sort by lastname a-z</button>
       <button id="btnhouse">Sort by house a-z</button>
     </div>
-    <ul id="list"></ul>
-
-    <template id="studentTemplate">
-      <li id="">
-        <p class="first"><span></span></p>
-        <p class="last"><span></span></p>
-        <p class="house"><span></span></p>
-        <button id="btnstudent">Show more</button>
-      </li>
-    </template>
+    <section>
+      <ul id="list"></ul>
+      <div class="counter">
+        <p class="totalnumber">
+          Total number of currently enrolled students: <span></span>
+        </p>
+        <p class="gryffindorenlisted">
+          Number of currently enrolled students in Gryffindor: <span></span>
+        </p>
+        <p class="hufflepuffenlisted">
+          Number of currently enrolled students in Hufflepuff: <span></span>
+        </p>
+        <p class="ravenclawenlisted">
+          Number of currently enrolled students in Ravenclaw: <span></span>
+        </p>
+        <p class="slytherinenlisted">
+          Number of currently enrolled students in Slytherin: <span></span>
+        </p>
+        <p class="numberofexpelled">
+          Number of expelled students: <span></span>
+        </p>
+      </div>
+      <template id="studentTemplate">
+        <li id="">
+          <p class="first"><span></span></p>
+          <p class="last"><span></span></p>
+          <p class="house"><span></span></p>
+          <button id="btnstudent">Show more info</button>
+          <button data-action="btnexpel">Expel this student</button>
+        </li>
+      </template>
+    </section>
     <div id="#" class="modal hide">
       <div class="modal-content">
         <img class="studentImg" src="" alt="portrait" />

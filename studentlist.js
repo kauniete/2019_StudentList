@@ -22,6 +22,9 @@ function init() {
   document.querySelector("#btnfirst").addEventListener("click", sortByFirst);
   document.querySelector("#btnlast").addEventListener("click", sortByLast);
   document.querySelector("#btnhouse").addEventListener("click", sortByHouse);
+  document
+    .querySelector("section")
+    .addEventListener("click", expelButtonClicked);
   // TODO: Load JSON, create clones, build list, add event listeners, show modal, find images, and other stuff ...
   getJSON();
 }
@@ -42,6 +45,11 @@ function createObject(data) {
     astudent.house = element.house;
     arrayOfStudents.push(astudent);
     filteredList = arrayOfStudents;
+  });
+  arrayOfStudents.forEach(student => {
+    //onsole.log(student);
+    const uniqueID = uuidv4();
+    student.id = uniqueID;
   });
   console.log(arrayOfStudents);
   displayList(arrayOfStudents);
@@ -117,17 +125,18 @@ function displayList(arrayOfStudents) {
     clone.querySelector(".first span").textContent = student.firstname;
     clone.querySelector(".last span").textContent = student.lastname;
     clone.querySelector(".house span").textContent = student.house;
-
+    clone.querySelector("[data-action=btnexpel]").id = student.id;
     clone.querySelector("li").id = student.firstname;
     document.querySelector("#list").appendChild(clone);
   });
+  countStudents(arrayOfStudents);
 }
 
 function showDetails(student) {
   //console.log(student);
   const modal = document.querySelector(".modal");
   const imgbase = "images/";
-  modal.querySelector(".modal-content").id = student.name;
+  //modal.querySelector(".modal-content").id = student.name;
   modal.querySelector(".name span").textContent =
     student.firstname + " " + student.lastname;
   modal.querySelector(".house span").textContent = student.house;
@@ -144,13 +153,84 @@ function showDetails(student) {
     modal.querySelector(".crestImg").src = imgbase + "hufflepuff.png";
   }
 
-  modal.querySelector(".studentImg").src =
-    imgbase +
-    student.lastname.toLowerCase() +
-    "_" +
-    student.firstname[0].toLowerCase() +
-    ".png";
-
+  if (student.lastname == "Finch-Fletchley") {
+    modal.querySelector(".studentImg").src = imgbase + "fletchley_j.png";
+  } else {
+    modal.querySelector(".studentImg").src =
+      imgbase +
+      student.lastname.toLowerCase() +
+      "_" +
+      student.firstname[0].toLowerCase() +
+      ".png";
+  }
   modal.classList.remove("hide");
   modal.addEventListener("click", () => modal.classList.add("hide"));
+}
+
+function expelButtonClicked(event) {
+  //console.log(event.target.dataset.action === "btnexpel");
+  //Figure out if a button was clicked
+  if (event.target.dataset.action === "btnexpel") {
+    const eventId = event.target.id;
+    console.log(eventId);
+    clickRemove(eventId);
+  }
+  //Figure out if it was a remove-button
+  //If so, call clickRemove
+}
+function clickRemove(eventId) {
+  console.log(arrayOfStudents);
+  // Figure out which element should be removed
+  // Find the element index in the array
+  function findById(id) {
+    return arrayOfStudents.findIndex(obj => obj.id === id);
+  }
+  // Splice that element from the array
+  let removeObject = findById(eventId);
+  console.log(removeObject);
+  arrayOfStudents.splice(removeObject, 1);
+  // Re-display the list
+  displayList(arrayOfStudents);
+}
+//https://stackoverflow.com/questions/105034/create-guid-uuid-in-javascript
+function uuidv4() {
+  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function(c) {
+    var r = (Math.random() * 16) | 0,
+      v = c == "x" ? r : (r & 0x3) | 0x8;
+    return v.toString(16);
+  });
+}
+
+//dunno why when I expel the last student and the array count is 0, the final count on the screen is 1 (should be 0)
+function countStudents(arrayOfStudents) {
+  const counts = {
+    Gryffindor: 0,
+    Slytherin: 0,
+    Hufflepuff: 0,
+    Ravenclaw: 0
+  };
+  arrayOfStudents.forEach(student => {
+    counts[student.house]++;
+    document.querySelector(".gryffindorenlisted span").innerHTML =
+      counts.Gryffindor;
+    document.querySelector(".hufflepuffenlisted span").innerHTML =
+      counts.Hufflepuff;
+    document.querySelector(".slytherinenlisted span").innerHTML =
+      counts.Slytherin;
+    document.querySelector(".ravenclawenlisted span").innerHTML =
+      counts.Ravenclaw;
+    document.querySelector(".totalnumber span").innerHTML =
+      arrayOfStudents.length;
+    /*counts.Gryffindor +
+      counts.Slytherin +
+      counts.Hufflepuff +
+      counts.Ravenclaw;*/
+    document.querySelector(".numberofexpelled span").innerHTML =
+      34 - arrayOfStudents.length;
+    /*(counts.Gryffindor +
+        counts.Slytherin +
+        counts.Hufflepuff +
+        counts.Ravenclaw);*/
+  });
+  return countStudents();
 }
