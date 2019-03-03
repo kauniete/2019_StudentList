@@ -73,7 +73,7 @@ li {
   border-bottom: solid grey 1px;
 }
 #list {
-  height: 50vh;
+  height: 44vh;
   width: 65vw;
   overflow: scroll;
 }
