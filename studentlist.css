@@ -1,35 +1,25 @@
-body {
-  background-color: aliceblue;
+* {
+  box-sizing: border-box;
 }
 
-.gryffindor {
+#Gryffindor {
   background-color: #ce3a0a;
   color: #fdb02e;
 }
 
-.hufflepuf {
+#Hufflepuff {
   background-color: #ffc02a;
   color: #0b0000;
 }
 
-.ravenclaw {
+#Ravenclaw {
   background-color: #395f9d;
   color: #e9ba36;
 }
 
-.slytherin {
+#Slytherin {
   background-color: #588c39;
   color: #c0b1c6;
-}
-li {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-}
-#list {
-  height: 50vh;
-  width: 70vw;
-  overflow: scroll;
 }
 
 .hide {
@@ -49,6 +39,51 @@ li {
   margin: 2em;
   padding: 2em;
 }
-.counter {
-  float: right;
+/*.counter {
+  display: flex;
+}*/
+body {
+  background-image: url("images/wallpaper.png");
+}
+button {
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-family: "Old Standard TT", serif;
+  font-size: 17px;
+  height: 4vh;
+  background-color: grey;
+}
+
+.first,
+.last,
+.house {
+  width: 1vw;
+  padding: 0;
+  margin: 0;
+  height: 3vh;
+}
+
+li {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  height: 6vh;
+  border-bottom: solid grey 1px;
+}
+#list {
+  height: 50vh;
+  width: 65vw;
+  overflow: scroll;
+}
+h1,
+h2 {
+  font-family: "Old Standard TT", serif;
+  font-size: 34px;
+}
+
+p {
+  font-family: "Old Standard TT", serif;
+  font-size: 17px;
 }

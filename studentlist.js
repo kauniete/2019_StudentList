@@ -151,18 +151,28 @@ function showDetails(student) {
   //modal.querySelector(".modal-content").id = student.name;
   modal.querySelector(".name span").textContent =
     student.firstname + " " + student.lastname;
-  modal.querySelector(".house span").textContent = student.house;
+  modal.querySelector(".studenthouse span").textContent = student.house;
   if (student.house == "Gryffindor") {
     modal.querySelector(".crestImg").src = imgbase + "gryffindor.png";
+    modal.style.color = "#fdb02e";
+    document.querySelector(".modal-content").style.backgroundColor = "#ce3a0a";
   }
   if (student.house == "Slytherin") {
     modal.querySelector(".crestImg").src = imgbase + "slytherin.png";
+    modal.style.color = "#c0b1c6";
+    document.querySelector(".modal-content").style.backgroundColor = " #588c39";
   }
+
   if (student.house == "Ravenclaw") {
     modal.querySelector(".crestImg").src = imgbase + "ravenclaw.png";
+    modal.style.color = "#e9ba36";
+    document.querySelector(".modal-content").style.backgroundColor = "#395f9d";
   }
+
   if (student.house == "Hufflepuff") {
     modal.querySelector(".crestImg").src = imgbase + "hufflepuff.png";
+    modal.style.color = "#0b0000";
+    document.querySelector(".modal-content").style.backgroundColor = "#ffc02a";
   }
 
   if (student.lastname == "Finch-Fletchley") {
@@ -190,6 +200,13 @@ function expelButtonClicked(event) {
   //Figure out if it was a remove-button
   //If so, call clickRemove
 }
+
+/*function findByFirstName(firstname) {
+  return arrayOfStudents.findIndex(obj => obj.firstname === "Indre");}
+  let doNotRemove = findByFirstName(firstname);
+  console.log(doNotRemove);
+}*/
+
 function clickRemove(eventId) {
   console.log(arrayOfStudents);
   // Figure out which element should be removed
@@ -213,7 +230,7 @@ function uuidv4() {
   });
 }
 
-//dunno why when I expel the last student and the array count is 0, the final count on the screen is 1 (should be 0)
+//counter only work when all houses are shown. also, dunno why when I expel the last student and the array count is 0, the final count on the screen is 1 (should be 0)
 function countStudents(arrayOfStudents) {
   const counts = {
     Gryffindor: 0,
